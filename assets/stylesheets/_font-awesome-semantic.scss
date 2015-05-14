@@ -1,0 +1,19 @@
+@mixin s-fa-icon($icon) {
+	@extend %fa;
+	@each $value in $icon {
+		@extend %#{convert-value($value)};
+	}
+}
+
+$value_map: (
+	right: pull-right,
+	left: pull-left
+);
+
+@function convert-value($value) {
+	@if map-has-key($value_map, $value) {
+		@return map-get($value_map, $value);
+	} @else {
+		@return fa-#{$value};
+	}
+}
