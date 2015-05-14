@@ -1,10 +1,64 @@
-# FontAwesome::Sass
+#Semantic FontAwesome Sass
+'semantic-fa-sass' is a fork of ['font-awesome-sass'](https://github.com/FortAwesome/font-awesome-sass), which focuses on the use of semantic class names. For example, instead if writing this:
 
-'font-awesome-sass' is a Sass-powered version of [FontAwesome](http://fortawesome.github.io/Font-Awesome/) for your Ruby projects and plays nicely with 
- Ruby on Rails, Compass, Sprockets, etc.
- 
- Refactored to support more Ruby environments with code and documentation humbly used from the excellent
- [bootstrap-sass](https://github.com/twbs/bootstrap-sass) project by the Bootstrap team 
+```html
+Connection Status: <i class="fa fa-times"></i>
+```
+
+You can instead write:
+
+```html
+ConnectionStatus: <i class="connection-status inactive"></i>
+```
+
+## Usage
+
+To use Semantic FontAwesome icons, you simply use the following mixin:
+
+```scss
+.connection-status {
+    .active {
+        @include s-fa-icon(signal);
+    }
+    .inactive {
+        @include s-fa-icon(times);
+    }
+}
+```
+
+This will then compile to:
+
+```scss
+...
+.connection-status .active, .connection-status .inactive {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+...
+.connection-status .inactive:before {
+  content: "";
+}
+
+.connection-status .active:before {
+  content: "";
+}
+...
+```
+
+This also has the added benefit of only rendering the css for icons you actually use!
+
+If you want to use other font-awesome classes, such as `fa-spin`, `fa-5x`, `fa-border` etc, you simply add them in the mixin:
+
+```scss
+.foo {
+    @include s-fa-icon(mobile 5x spin border right)
+}
+```
 
 ## Installation
 
@@ -18,7 +72,7 @@ Please see the appropriate guide for your environment of choice:
 In your Gemfile include:
 
 ```ruby
-gem 'font-awesome-sass', '~> 4.3.0'
+gem 'semantic-fa-sass', '~> 1.0'
 ```
 
 And then execute:
@@ -35,40 +89,20 @@ includes the sprockets assets helper Sass functions used for finding the proper 
 @import "font-awesome";
 ```
 
-#### Rails Helper usage
-
-In your view:
-
-```ruby
-icon('flag')
-# => <i class="fa fa-flag"></i>
-```
-
-```ruby
-icon('flag', '', class: 'strong')
-# => <i class="fa fa-flag strong"></i>
-```
-
-```ruby
-icon('flag', 'Font Awesome', id: 'my-icon', class: 'strong')
-# => <i id="my-icon" class="fa fa-flag strong"></i> Font Awesome
-```
-
-Note: the icon helper can take a hash of options that will be passed to the content_tag helper
 
 ### b. Compass without Rails
 
 Install the gem
 
 ```sh
-gem install font-awesome-sass
+gem install semantic-fa-sass
 ```
 
 If you have an existing Compass project:
 
 ```ruby
 # config.rb:
-require 'font-awesome-sass'
+require 'semantic-fa-sass'
 ```
 
 Import the FontAwesome styles
@@ -76,20 +110,4 @@ Import the FontAwesome styles
 ```scss
 @import "font-awesome-compass";
 @import "font-awesome";
-```
-
-## Upgrading from FontAwesome::Sass 3.x
-
-Prepend the `fa` class to existing icons:
-
-3.x Syntax
-
-```html
-<i class="icon-github"></i>
-```
-
-4.x Syntax
-
-```html
-<i class="fa fa-github"></i>
 ```

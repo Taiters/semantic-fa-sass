@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version       = FontAwesome::Sass::VERSION
   spec.authors       = ['Daniel Tait']
   spec.email         = ['dantait91@gmail.com']
-  spec.description   = 'Fork of Font-Awesome SASS gem which uses placeholders for semantic class names'
+  spec.description   = 'Fork of Font-Awesome SASS which focuses on the use of semantic class names'
   spec.summary       = 'Semantic Font-Awesome SASS'
   spec.homepage      = 'https://github.com/Taiters/semantic-fa-sass'
   spec.license       = 'MIT'
