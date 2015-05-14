@@ -1,17 +1,17 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# # coding: utf-8
+# lib = File.expand_path('../lib', __FILE__)
+# $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'font_awesome/sass/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'font-awesome-sass'
+  spec.name          = 'semantic-fa-sass'
   spec.version       = FontAwesome::Sass::VERSION
-  spec.authors       = ['Travis Chase']
-  spec.email         = ['travis@travischase.me']
-  spec.description   = 'Font-Awesome SASS gem for use in Ruby projects'
-  spec.summary       = 'Font-Awesome SASS'
-  spec.homepage      = 'https://github.com/FortAwesome/font-awesome-sass'
+  spec.authors       = ['Daniel Tait']
+  spec.email         = ['dantait91@gmail.com']
+  spec.description   = 'Fork of Font-Awesome SASS gem which uses placeholders for semantic class names'
+  spec.summary       = 'Semantic Font-Awesome SASS'
+  spec.homepage      = 'https://github.com/Taiters/semantic-fa-sass'
   spec.license       = 'MIT'
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
